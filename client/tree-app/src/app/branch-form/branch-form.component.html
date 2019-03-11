@@ -1,0 +1,43 @@
+<form>
+  <div class="form-group">
+      <label>Parent Branch:
+        <div>
+            <span *ngIf="branch.parent">
+                {{ branch.parent.name }}
+            </span>
+            <span [hidden]="branch.parent_id">It's a top level branch</span>
+            <button [hidden]="parent_selecting" class="btn btn-secondary btn-sm"
+                  (click)="startSelectingParent()">Change</button>
+            <button [hidden]="parent_selecting || (! branch.parent_id)" class="btn btn-danger btn-sm"
+                    (click)="dropParent()" type="button">Drop parent</button>
+            <div [hidden]="! parent_selecting" id="parentBranchAcceptButtons">
+                <button  class="btn btn-dark btn-sm" (click)="stopSelectingParent()" name="stop">Cancel</button>
+                <button  class="btn btn-success btn-sm" (click)="applySelectedParent()">Apply</button>
+            </div>
+
+        </div>
+      </label>
+  </div>
+  <fieldset #detailsFieldset>
+      <div class="form-group">
+        <label>Name:
+          <input [(ngModel)]="branch.name" name="name" class="form-control" placeholder="Branch name"/>
+        </label>
+      </div>
+      <div class="form-group">
+        <label>Description:
+          <textarea [(ngModel)]="branch.description" name="description" class="form-control" placeholder="Some description"></textarea>
+        </label>
+      </div>
+
+      <div class="form-group">
+          <label>Features:</label>
+          <div *ngFor="let feature of branch.features" class="form-group">
+              <app-feature-form-fieldset [feature]="feature"></app-feature-form-fieldset>
+          </div>
+          <button (click)="pushFeature()" class="btn btn-success btn-sm" >+</button>
+      </div>
+      <button (click)="onCancel.emit()" class="btn btn-secondary">Back</button>
+      <button (click)="applyBranch()" class="btn btn-primary">Save</button>
+  </fieldset>
+</form>

@@ -1,0 +1,45 @@
+/* HeroesComponent's private CSS styles */
+:host{
+    vertical-align: top;
+}
+.selected {
+  background-color: #CFD8DC !important;
+  color: white;
+}
+.branches, .branches + * {
+    display: inline-block;;
+}
+.branches {
+    height: 20em;
+    overflow-y: auto;
+    margin: 0 0 2em 0;
+    list-style-type: none;
+    padding: 0;
+    width: 15em;
+    text-align: left;
+}
+.branches li {
+  cursor: pointer;
+  position: relative;
+  left: 0;
+  background-color: #EEE;
+  margin: .5em 0 .5em .5em;
+  padding: .4em 0 .4em .4em;
+  line-height: 1.2em;
+  border-radius: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.branches li.selected:hover {
+  background-color: #BBD8DC !important;
+  color: white;
+}
+.branches li:hover {
+  color: #607D8B;
+  background-color: #DDD;
+  left: .1em;
+}
+.branches .text {
+  position: relative;
+  top: -3px;
+}

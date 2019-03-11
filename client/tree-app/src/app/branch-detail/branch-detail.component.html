@@ -1,0 +1,23 @@
+<div *ngIf="branch">
+    <div [hidden]="operation !== 'preview' || ! branch.id">
+        <button class="edit" title="edit branch" (click)="branchForm.setBranch(branch); operation = 'edit'">Edit</button>
+        <h2>{{ branch.name | uppercase }}</h2>
+        <p>{{ branch.description }}</p>
+        <h4>Features</h4>
+        <ul>
+            <li *ngFor="let feature of branch.features">
+                {{ feature.name }} - {{ feature.representation }}
+                <ul *ngIf="feature.representation === 'choices'">
+                    <li *ngFor="let choice of choices">{{ choice }}</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <app-branch-form #branchForm [hidden]="operation === 'preview'"
+                     [selected_branch]="selected_branch"
+                     (onFormSubmit)="saveBranch($event)"
+                     (askRefreshTree)="askRefreshTree.emit($event)"
+                     (scrollToBranchList)="scrollToBranchList.emit($event)"
+                     (scrollToDetails)="scrollToDetails.emit($event)"
+                     (onCancel)="operation = 'preview'"></app-branch-form>
+</div>

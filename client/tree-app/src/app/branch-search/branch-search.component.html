@@ -1,0 +1,13 @@
+<div id="search-component">
+  <h4>Branch Search</h4>
+
+  <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+
+  <ul class="search-result">
+    <li *ngFor="let branch of branches$ | async" >
+      <a routerLink="/detail/{{branch.id}}">
+        {{branch.name}}
+      </a>
+    </li>
+  </ul>
+</div>

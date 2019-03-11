@@ -1,0 +1,11 @@
+<h3>Top Branches</h3>
+<div class="grid grid-pad">
+  <a *ngFor="let branch of branches" class="col-1-4"
+     routerLink="/detail/{{branch.id}}">
+    <div class="module branch">
+      <h4>{{branch.name}}</h4>
+    </div>
+  </a>
+</div>
+
+<app-branch-search></app-branch-search>

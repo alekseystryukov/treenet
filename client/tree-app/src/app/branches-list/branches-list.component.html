@@ -1,0 +1,16 @@
+<ul class="branches">
+  <li *ngFor="let branch of branches"
+      [class.selected]="branch === selectedBranch"
+      (click)="onSelect(branch)">
+     {{branch.name}}
+
+  </li>
+  <li (click)="onAddBranch.emit(parent_branch)">
+    <span class="badge">+</span>new branch
+  </li>
+</ul>
+<app-branches-list *ngIf="selectedBranch"
+                   (onBranchesShowed)="onBranchesShowed.emit($event)"
+                   (onBranchSelected)="onBranchSelected.emit($event)"
+                   (onAddBranch)="onAddBranch.emit($event)"
+                   [parent_branch]="selectedBranch"></app-branches-list>

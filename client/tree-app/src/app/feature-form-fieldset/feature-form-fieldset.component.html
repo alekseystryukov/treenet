@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col">
+      <label>Name:
+        <input [(ngModel)]="feature.name" name="name" class="form-control" placeholder="Feature name"/>
+      </label>
+    </div>
+    <div class="col">
+      <label>Representation:
+        <select [(ngModel)]="feature.representation" name="representation" class="form-control">
+            <option>number</option>
+            <option>string</option>
+            <option>choices</option>
+        </select>
+      </label>
+    </div>
+    <div class="col" [hidden]="feature.representation != 'choices' ">
+      <label>Choices:
+        <input [(ngModel)]="feature.choices" name="choices" class="form-control" placeholder="choices"/>
+      </label>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+<h2>Branches</h2>
+
+<div class="tree-slider" #treeSlider>
+    <app-branches-list (onBranchesShowed)="onBranchesShowed($event)" #branchesTopList
+                       (onBranchSelected)="onBranchSelected($event)"
+                       (onAddBranch)="addBranch($event)"></app-branches-list>
+</div>
+<app-branch-detail #branchDetail [selected_branch]="selectedBranch"
+                   (scrollToBranchList)="scrollToBranchList($event)"
+                   (scrollToDetails)="scrollToDetails($event)"
+                   (askRefreshTree)="refreshTree($event)"></app-branch-detail>

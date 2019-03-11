@@ -1,0 +1,11 @@
+label {
+    width: 100%;
+}
+#parentBranchAcceptButtons{
+    position: fixed;
+    bottom: 2em;
+    right: 2em;
+    background-color: #aaa;
+    padding: 1.5em;
+    border-radius: 1em;
+}
